@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/assets/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/assets/parameters.json", "start": 32768, "end": 33122, "audio": 0}, {"filename": "/assets/helloworld_loops.bin", "start": 33122, "end": 65890, "audio": 0}, {"filename": "/assets/helloworld_stack.bin", "start": 65890, "end": 98658, "audio": 0}, {"filename": "/assets/helloworld.bin", "start": 98658, "end": 131426, "audio": 0}], "remote_package_size": 131426, "package_uuid": "239a70fb-b905-45ce-a788-bd18ea3df6af"});
+   loadPackage({"files": [{"filename": "/assets/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/assets/parameters.json", "start": 32768, "end": 33122, "audio": 0}, {"filename": "/assets/helloworld_loops.bin", "start": 33122, "end": 65890, "audio": 0}, {"filename": "/assets/helloworld_stack.bin", "start": 65890, "end": 98658, "audio": 0}, {"filename": "/assets/helloworld.bin", "start": 98658, "end": 131426, "audio": 0}], "remote_package_size": 131426, "package_uuid": "8d1ac475-8d3e-446f-b1a4-f5b8f5d2684e"});
   
   })();
   

@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/assets/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/assets/parameters.json", "start": 32768, "end": 33124, "audio": 0}, {"filename": "/assets/helloworld_loops.bin", "start": 33124, "end": 65892, "audio": 0}, {"filename": "/assets/helloworld_stack.bin", "start": 65892, "end": 98660, "audio": 0}, {"filename": "/assets/helloworld.bin", "start": 98660, "end": 131428, "audio": 0}], "remote_package_size": 131428, "package_uuid": "0c8ac61c-f19a-4ce3-8bac-449ba2ea30a1"});
+   loadPackage({"files": [{"filename": "/assets/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/assets/parameters.json", "start": 32768, "end": 33124, "audio": 0}, {"filename": "/assets/helloworld_loops.bin", "start": 33124, "end": 65892, "audio": 0}, {"filename": "/assets/helloworld_stack.bin", "start": 65892, "end": 98660, "audio": 0}, {"filename": "/assets/helloworld.bin", "start": 98660, "end": 131428, "audio": 0}], "remote_package_size": 131428, "package_uuid": "012ed4d6-985f-499e-b7e7-8a308e8cbb34"});
   
   })();
   
@@ -981,8 +981,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 1552,
-  'maximum': 1552 + 0,
+  'initial': 1553,
+  'maximum': 1553 + 0,
   'element': 'anyfunc'
 });
 
@@ -1614,7 +1614,7 @@ if (ENVIRONMENT_IS_PTHREAD) {
 var TOTAL_STACK = 5242880;
 if (Module['TOTAL_STACK']) assert(TOTAL_STACK === Module['TOTAL_STACK'], 'the stack size can no longer be determined at runtime')
 
-var INITIAL_INITIAL_MEMORY = Module['INITIAL_MEMORY'] || 134217728;if (!Object.getOwnPropertyDescriptor(Module, 'INITIAL_MEMORY')) Object.defineProperty(Module, 'INITIAL_MEMORY', { configurable: true, get: function() { abort('Module.INITIAL_MEMORY has been replaced with plain INITIAL_INITIAL_MEMORY') } });
+var INITIAL_INITIAL_MEMORY = Module['INITIAL_MEMORY'] || 268435456;if (!Object.getOwnPropertyDescriptor(Module, 'INITIAL_MEMORY')) Object.defineProperty(Module, 'INITIAL_MEMORY', { configurable: true, get: function() { abort('Module.INITIAL_MEMORY has been replaced with plain INITIAL_INITIAL_MEMORY') } });
 
 assert(INITIAL_INITIAL_MEMORY >= TOTAL_STACK, 'INITIAL_MEMORY should be larger than TOTAL_STACK, was ' + INITIAL_INITIAL_MEMORY + '! (TOTAL_STACK=' + TOTAL_STACK + ')');
 

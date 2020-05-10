@@ -15,9 +15,6 @@ var parentThreadId = 0; // The ID of the parent pthread that launched this threa
 
 var Module = {};
 
-function assert(condition, text) {
-  if (!condition) abort('Assertion failed: ' + text);
-}
 
 function threadPrintErr() {
   var text = Array.prototype.slice.call(arguments).join(' ');
@@ -26,12 +23,6 @@ function threadPrintErr() {
 function threadAlert() {
   var text = Array.prototype.slice.call(arguments).join(' ');
   postMessage({cmd: 'alert', text: text, threadId: selfThreadId});
-}
-// We don't need out() for now, but may need to add it if we want to use it
-// here. Or, if this code all moves into the main JS, that problem will go
-// away. (For now, adding it here increases code size for no benefit.)
-var out = function() {
-  throw 'out() is not defined in worker.js.';
 }
 var err = threadPrintErr;
 this.alert = threadAlert;
@@ -105,16 +96,9 @@ this.onmessage = function(e) {
       // The stack grows downwards
       var max = e.data.stackBase;
       var top = e.data.stackBase + e.data.stackSize;
-      assert(threadInfoStruct);
-      assert(selfThreadId);
-      assert(parentThreadId);
-      assert(top != 0);
-      assert(max != 0);
-      assert(top > max);
       // Also call inside JS module to set up the stack frame for this pthread in JS module scope
       Module['establishStackSpace'](top, max);
       Module['_emscripten_tls_init']();
-      Module['writeStackCookie']();
 
       Module['PThread'].receiveObjectTransfer(e.data);
       Module['PThread'].setThreadStatus(Module['_pthread_self'](), 1/*EM_THREAD_STATUS_RUNNING*/);
@@ -129,7 +113,6 @@ this.onmessage = function(e) {
         // flag -s EMULATE_FUNCTION_POINTER_CASTS=1 to add in emulation for this x86 ABI extension.
         var result = Module['dynCall_ii'](e.data.start_routine, e.data.arg);
 
-        Module['checkStackCookie']();
         // The thread might have finished without calling pthread_exit(). If so, then perform the exit operation ourselves.
         // (This is a no-op if explicit pthread_exit() had been called prior.)
         if (!Module['getNoExitRuntime']())
@@ -141,15 +124,8 @@ this.onmessage = function(e) {
           Atomics.store(Module['HEAPU32'], (threadInfoStruct + 4 /*C_STRUCTS.pthread.threadExitCode*/ ) >> 2, (ex instanceof Module['ExitStatus']) ? ex.status : -2 /*A custom entry specific to Emscripten denoting that the thread crashed.*/);
 
           Atomics.store(Module['HEAPU32'], (threadInfoStruct + 0 /*C_STRUCTS.pthread.threadStatus*/ ) >> 2, 1); // Mark the thread as no longer running.
-          if (typeof(Module['_emscripten_futex_wake']) !== "function") {
-            err("Thread Initialisation failed.");
-            throw ex;
-          }
           Module['_emscripten_futex_wake'](threadInfoStruct + 0 /*C_STRUCTS.pthread.threadStatus*/, 0x7FFFFFFF/*INT_MAX*/); // Wake all threads waiting on this thread to finish.
           if (!(ex instanceof Module['ExitStatus'])) throw ex;
-        } else {
-          // else e == 'unwind', and we should fall through here and keep the pthread alive for asynchronous events.
-          err('Pthread 0x' + threadInfoStruct.toString(16) + ' completed its pthread main entry point with an unwind, keeping the pthread worker alive for asynchronous operation.');
         }
       }
     } else if (e.data.cmd === 'cancel') { // Main thread is asking for a pthread_cancel() on this thread.

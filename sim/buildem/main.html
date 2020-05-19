@@ -1,44 +1,48 @@
 <head>
 <link rel="shortcut icon" href="#" />
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1' name='viewport' />
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen" />
-    <style media="screen" type="text/css">
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1'
+	name='viewport' />
+<link rel="stylesheet" type="text/css" href="css/normalize.css"
+	media="screen" />
+<style media="screen" type="text/css">
+* {
+	box-sizing: border-box;
+}
 
-        html, body {
-            height: 100%;
-        }
+html, body {
+	height: 100%;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: black;
-            color: #999;
-            padding: 1.5em;
-        }
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: black;
+	color: #999;
+	padding: 1.5em;
+}
 
-        #canvas {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: block;
-        }
-    </style>
-    <title>ElectroLab</title>
+#canvas {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+}
+</style>
+<title>ElectroLab</title>
 </head>
 <html>
 <body>
-    <canvas id="canvas" width="256" height="240" class="hidden"></canvas>
-    <script>
+
+	<canvas id="canvas" width="256" height="240" class="hidden"></canvas>
+	<script>
 		var Module = {
 			print : (function() {
 				return function(text) {
@@ -52,11 +56,17 @@
 					text = Array.prototype.slice.call(arguments).join(' ');
 				console.error(text);
 			},
-        canvas: (function() {
-          var canvas = document.getElementById('canvas');
-          canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
-          return canvas;
-        })(),
+			canvas : (function() {
+				var canvas = document.getElementById('canvas');
+				canvas.addEventListener('contextmenu', event => event.preventDefault());
+				canvas.addEventListener(
+								"webglcontextlost",
+								function(e) {
+									alert('WebGL context lost. You will need to reload the page.');
+									e.preventDefault();
+								}, false);
+				return canvas;
+			})(),
 		};
 	</script>
 	<script async type="text/javascript" src="main.js"></script>

@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/parameters.json", "start": 32768, "end": 33122, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 33122, "end": 65890, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 65890, "end": 98658, "audio": 0}, {"filename": "/run.log", "start": 98658, "end": 98715, "audio": 0}, {"filename": "/helloworld.bin", "start": 98715, "end": 131483, "audio": 0}, {"filename": "/imgui.ini", "start": 131483, "end": 132333, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 132333, "end": 294921, "audio": 0}], "remote_package_size": 294921, "package_uuid": "aa0600ed-ef2f-40c5-87c2-60098e5d53e1"});
+   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/parameters.json", "start": 32768, "end": 33122, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 33122, "end": 65890, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 65890, "end": 98658, "audio": 0}, {"filename": "/run.log", "start": 98658, "end": 98715, "audio": 0}, {"filename": "/helloworld.bin", "start": 98715, "end": 131483, "audio": 0}, {"filename": "/imgui.ini", "start": 131483, "end": 132333, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 132333, "end": 294921, "audio": 0}], "remote_package_size": 294921, "package_uuid": "78e37a53-4eec-4f28-9fbe-8dabc46fbf8c"});
   
   })();
   

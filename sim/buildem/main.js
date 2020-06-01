@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/parameters.json", "start": 32768, "end": 33125, "audio": 0}, {"filename": "/helloworld.s", "start": 33125, "end": 34951, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 34951, "end": 67719, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 67719, "end": 100487, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 100487, "end": 100813, "audio": 0}, {"filename": "/run.log", "start": 100813, "end": 100870, "audio": 0}, {"filename": "/helloworld.bin", "start": 100870, "end": 133638, "audio": 0}, {"filename": "/imgui.ini", "start": 133638, "end": 136224, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 136224, "end": 298812, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 298812, "end": 879432, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 879432, "end": 992876, "audio": 0}], "remote_package_size": 992876, "package_uuid": "4094f2c9-6b39-48a3-8e65-249e8d215d2d"});
+   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/helloworld.bin.list", "start": 32768, "end": 44591, "audio": 0}, {"filename": "/parameters.json", "start": 44591, "end": 44948, "audio": 0}, {"filename": "/helloworld.s", "start": 44948, "end": 48672, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 48672, "end": 81440, "audio": 0}, {"filename": "/helloworld_loops.bin.list", "start": 81440, "end": 87648, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 87648, "end": 120416, "audio": 0}, {"filename": "/blink.bin.list", "start": 120416, "end": 121881, "audio": 0}, {"filename": "/helloworld_stack.bin.list", "start": 121881, "end": 127373, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 127373, "end": 127699, "audio": 0}, {"filename": "/run.log", "start": 127699, "end": 127756, "audio": 0}, {"filename": "/helloworld.bin", "start": 127756, "end": 160524, "audio": 0}, {"filename": "/imgui.ini", "start": 160524, "end": 163110, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 163110, "end": 325698, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 325698, "end": 906318, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 906318, "end": 1019762, "audio": 0}], "remote_package_size": 1019762, "package_uuid": "33723f3d-d1b8-4b50-b5af-f6d95179612f"});
   
   })();
   
@@ -1590,11 +1590,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5478960,
+    STACK_BASE = 5480928,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 236080,
-    DYNAMIC_BASE = 5478960,
-    DYNAMICTOP_PTR = 235152;
+    STACK_MAX = 238048,
+    DYNAMIC_BASE = 5480928,
+    DYNAMICTOP_PTR = 237120;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2244,7 +2244,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 235056;
+// STATICTOP = STATIC_BASE + 237024;
 /* global initializers */ if (!ENVIRONMENT_IS_PTHREAD) __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -2289,7 +2289,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var ERRNO_CODES={EPERM:63,ENOENT:44,ESRCH:71,EINTR:27,EIO:29,ENXIO:60,E2BIG:1,ENOEXEC:45,EBADF:8,ECHILD:12,EAGAIN:6,EWOULDBLOCK:6,ENOMEM:48,EACCES:2,EFAULT:21,ENOTBLK:105,EBUSY:10,EEXIST:20,EXDEV:75,ENODEV:43,ENOTDIR:54,EISDIR:31,EINVAL:28,ENFILE:41,EMFILE:33,ENOTTY:59,ETXTBSY:74,EFBIG:22,ENOSPC:51,ESPIPE:70,EROFS:69,EMLINK:34,EPIPE:64,EDOM:18,ERANGE:68,ENOMSG:49,EIDRM:24,ECHRNG:106,EL2NSYNC:156,EL3HLT:107,EL3RST:108,ELNRNG:109,EUNATCH:110,ENOCSI:111,EL2HLT:112,EDEADLK:16,ENOLCK:46,EBADE:113,EBADR:114,EXFULL:115,ENOANO:104,EBADRQC:103,EBADSLT:102,EDEADLOCK:16,EBFONT:101,ENOSTR:100,ENODATA:116,ETIME:117,ENOSR:118,ENONET:119,ENOPKG:120,EREMOTE:121,ENOLINK:47,EADV:122,ESRMNT:123,ECOMM:124,EPROTO:65,EMULTIHOP:36,EDOTDOT:125,EBADMSG:9,ENOTUNIQ:126,EBADFD:127,EREMCHG:128,ELIBACC:129,ELIBBAD:130,ELIBSCN:131,ELIBMAX:132,ELIBEXEC:133,ENOSYS:52,ENOTEMPTY:55,ENAMETOOLONG:37,ELOOP:32,EOPNOTSUPP:138,EPFNOSUPPORT:139,ECONNRESET:15,ENOBUFS:42,EAFNOSUPPORT:5,EPROTOTYPE:67,ENOTSOCK:57,ENOPROTOOPT:50,ESHUTDOWN:140,ECONNREFUSED:14,EADDRINUSE:3,ECONNABORTED:13,ENETUNREACH:40,ENETDOWN:38,ETIMEDOUT:73,EHOSTDOWN:142,EHOSTUNREACH:23,EINPROGRESS:26,EALREADY:7,EDESTADDRREQ:17,EMSGSIZE:35,EPROTONOSUPPORT:66,ESOCKTNOSUPPORT:137,EADDRNOTAVAIL:4,ENETRESET:39,EISCONN:30,ENOTCONN:53,ETOOMANYREFS:141,EUSERS:136,EDQUOT:19,ESTALE:72,ENOTSUP:138,ENOMEDIUM:148,EILSEQ:25,EOVERFLOW:61,ECANCELED:11,ENOTRECOVERABLE:56,EOWNERDEAD:62,ESTRPIPE:135};
   
   
-  var __main_thread_futex_wait_address=236064;function _emscripten_futex_wake(addr, count) {
+  var __main_thread_futex_wait_address=238032;function _emscripten_futex_wake(addr, count) {
       if (addr <= 0 || addr > HEAP8.length || addr&3 != 0 || count < 0) return -28;
       if (count == 0) return 0;
       // Waking (at least) INT_MAX waiters is defined to mean wake all callers.
@@ -2364,7 +2364,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         // up each Worker immediately. (in asm.js mode ignore PTHREAD_POOL_DELAY_LOAD altogether for
         // simplicity, as multithreading performance optimizations are not interesting there)
   
-        PThread.mainThreadBlock = 235312;
+        PThread.mainThreadBlock = 237280;
   
         for (var i = 0; i < 232/4; ++i) HEAPU32[PThread.mainThreadBlock/4+i] = 0;
   
@@ -2377,7 +2377,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         HEAP32[((headPtr)>>2)]=headPtr;
   
         // Allocate memory for thread-local storage.
-        var tlsMemory = 235552;
+        var tlsMemory = 237520;
         for (var i = 0; i < 128; ++i) HEAPU32[tlsMemory/4+i] = 0;
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 104 ) >> 2, tlsMemory); // Init thread-local-storage memory array.
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 40 ) >> 2, PThread.mainThreadBlock); // Main thread ID.
@@ -7588,7 +7588,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
 
   function _emscripten_get_sbrk_ptr() {
-      return 235152;
+      return 237120;
     }
 
   function _emscripten_glActiveTexture(x0) { GLctx['activeTexture'](x0) }

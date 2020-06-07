@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/helloworld.bin.list", "start": 32768, "end": 44300, "audio": 0}, {"filename": "/parameters.json", "start": 44300, "end": 44653, "audio": 0}, {"filename": "/traces.vcd", "start": 44653, "end": 54457, "audio": 0}, {"filename": "/helloworld.s", "start": 54457, "end": 58145, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 58145, "end": 90913, "audio": 0}, {"filename": "/helloworld_loops.bin.list", "start": 90913, "end": 97121, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 97121, "end": 129889, "audio": 0}, {"filename": "/blink.bin.list", "start": 129889, "end": 131354, "audio": 0}, {"filename": "/helloworld_stack.bin.list", "start": 131354, "end": 136846, "audio": 0}, {"filename": "/blink.s", "start": 136846, "end": 137122, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 137122, "end": 137448, "audio": 0}, {"filename": "/helloworld_stack.s", "start": 137448, "end": 138987, "audio": 0}, {"filename": "/run.log", "start": 138987, "end": 139044, "audio": 0}, {"filename": "/helloworld_loops.s", "start": 139044, "end": 140867, "audio": 0}, {"filename": "/helloworld.bin", "start": 140867, "end": 173635, "audio": 0}, {"filename": "/imgui.ini", "start": 173635, "end": 176221, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 176221, "end": 338809, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 338809, "end": 919429, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 919429, "end": 1032873, "audio": 0}], "remote_package_size": 1032873, "package_uuid": "c55eff33-5f4f-404c-9be1-3061a3603ef0"});
+   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/helloworld.bin.list", "start": 32768, "end": 44300, "audio": 0}, {"filename": "/parameters.json", "start": 44300, "end": 44653, "audio": 0}, {"filename": "/traces.vcd", "start": 44653, "end": 108300, "audio": 0}, {"filename": "/helloworld.s", "start": 108300, "end": 111988, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 111988, "end": 144756, "audio": 0}, {"filename": "/helloworld_loops.bin.list", "start": 144756, "end": 150964, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 150964, "end": 183732, "audio": 0}, {"filename": "/blink.bin.list", "start": 183732, "end": 185197, "audio": 0}, {"filename": "/helloworld_stack.bin.list", "start": 185197, "end": 190689, "audio": 0}, {"filename": "/blink.s", "start": 190689, "end": 190965, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 190965, "end": 191291, "audio": 0}, {"filename": "/helloworld_stack.s", "start": 191291, "end": 192830, "audio": 0}, {"filename": "/run.log", "start": 192830, "end": 192887, "audio": 0}, {"filename": "/helloworld_loops.s", "start": 192887, "end": 194710, "audio": 0}, {"filename": "/helloworld.bin", "start": 194710, "end": 227478, "audio": 0}, {"filename": "/imgui.ini", "start": 227478, "end": 230195, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 230195, "end": 392783, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 392783, "end": 973403, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 973403, "end": 1086847, "audio": 0}], "remote_package_size": 1086847, "package_uuid": "765ad10d-7dc8-4f7f-a4f9-84d2420aaeb5"});
   
   })();
   
@@ -981,8 +981,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 1982,
-  'maximum': 1982 + 0,
+  'initial': 1984,
+  'maximum': 1984 + 0,
   'element': 'anyfunc'
 });
 
@@ -1590,11 +1590,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5486608,
+    STACK_BASE = 5486944,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 243728,
-    DYNAMIC_BASE = 5486608,
-    DYNAMICTOP_PTR = 242800;
+    STACK_MAX = 244064,
+    DYNAMIC_BASE = 5486944,
+    DYNAMICTOP_PTR = 243136;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2244,7 +2244,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 242704;
+// STATICTOP = STATIC_BASE + 243040;
 /* global initializers */ if (!ENVIRONMENT_IS_PTHREAD) __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -2289,7 +2289,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var ERRNO_CODES={EPERM:63,ENOENT:44,ESRCH:71,EINTR:27,EIO:29,ENXIO:60,E2BIG:1,ENOEXEC:45,EBADF:8,ECHILD:12,EAGAIN:6,EWOULDBLOCK:6,ENOMEM:48,EACCES:2,EFAULT:21,ENOTBLK:105,EBUSY:10,EEXIST:20,EXDEV:75,ENODEV:43,ENOTDIR:54,EISDIR:31,EINVAL:28,ENFILE:41,EMFILE:33,ENOTTY:59,ETXTBSY:74,EFBIG:22,ENOSPC:51,ESPIPE:70,EROFS:69,EMLINK:34,EPIPE:64,EDOM:18,ERANGE:68,ENOMSG:49,EIDRM:24,ECHRNG:106,EL2NSYNC:156,EL3HLT:107,EL3RST:108,ELNRNG:109,EUNATCH:110,ENOCSI:111,EL2HLT:112,EDEADLK:16,ENOLCK:46,EBADE:113,EBADR:114,EXFULL:115,ENOANO:104,EBADRQC:103,EBADSLT:102,EDEADLOCK:16,EBFONT:101,ENOSTR:100,ENODATA:116,ETIME:117,ENOSR:118,ENONET:119,ENOPKG:120,EREMOTE:121,ENOLINK:47,EADV:122,ESRMNT:123,ECOMM:124,EPROTO:65,EMULTIHOP:36,EDOTDOT:125,EBADMSG:9,ENOTUNIQ:126,EBADFD:127,EREMCHG:128,ELIBACC:129,ELIBBAD:130,ELIBSCN:131,ELIBMAX:132,ELIBEXEC:133,ENOSYS:52,ENOTEMPTY:55,ENAMETOOLONG:37,ELOOP:32,EOPNOTSUPP:138,EPFNOSUPPORT:139,ECONNRESET:15,ENOBUFS:42,EAFNOSUPPORT:5,EPROTOTYPE:67,ENOTSOCK:57,ENOPROTOOPT:50,ESHUTDOWN:140,ECONNREFUSED:14,EADDRINUSE:3,ECONNABORTED:13,ENETUNREACH:40,ENETDOWN:38,ETIMEDOUT:73,EHOSTDOWN:142,EHOSTUNREACH:23,EINPROGRESS:26,EALREADY:7,EDESTADDRREQ:17,EMSGSIZE:35,EPROTONOSUPPORT:66,ESOCKTNOSUPPORT:137,EADDRNOTAVAIL:4,ENETRESET:39,EISCONN:30,ENOTCONN:53,ETOOMANYREFS:141,EUSERS:136,EDQUOT:19,ESTALE:72,ENOTSUP:138,ENOMEDIUM:148,EILSEQ:25,EOVERFLOW:61,ECANCELED:11,ENOTRECOVERABLE:56,EOWNERDEAD:62,ESTRPIPE:135};
   
   
-  var __main_thread_futex_wait_address=243712;function _emscripten_futex_wake(addr, count) {
+  var __main_thread_futex_wait_address=244048;function _emscripten_futex_wake(addr, count) {
       if (addr <= 0 || addr > HEAP8.length || addr&3 != 0 || count < 0) return -28;
       if (count == 0) return 0;
       // Waking (at least) INT_MAX waiters is defined to mean wake all callers.
@@ -2364,7 +2364,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         // up each Worker immediately. (in asm.js mode ignore PTHREAD_POOL_DELAY_LOAD altogether for
         // simplicity, as multithreading performance optimizations are not interesting there)
   
-        PThread.mainThreadBlock = 242960;
+        PThread.mainThreadBlock = 243296;
   
         for (var i = 0; i < 232/4; ++i) HEAPU32[PThread.mainThreadBlock/4+i] = 0;
   
@@ -2377,7 +2377,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         HEAP32[((headPtr)>>2)]=headPtr;
   
         // Allocate memory for thread-local storage.
-        var tlsMemory = 243200;
+        var tlsMemory = 243536;
         for (var i = 0; i < 128; ++i) HEAPU32[tlsMemory/4+i] = 0;
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 104 ) >> 2, tlsMemory); // Init thread-local-storage memory array.
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 40 ) >> 2, PThread.mainThreadBlock); // Main thread ID.
@@ -7588,7 +7588,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
 
   function _emscripten_get_sbrk_ptr() {
-      return 242800;
+      return 243136;
     }
 
   function _emscripten_glActiveTexture(x0) { GLctx['activeTexture'](x0) }
@@ -11534,10 +11534,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _glViewport(x0, x1, x2, x3) { GLctx['viewport'](x0, x1, x2, x3) }
 
   
-  var ___tm_current=242816;
+  var ___tm_current=243152;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 242864, 4), 242864);
+  var ___tm_timezone=(stringToUTF8("GMT", 243200, 4), 243200);
   
   function _tzset() {
   if (ENVIRONMENT_IS_PTHREAD) return _emscripten_proxy_to_main_thread_js(65, 1);

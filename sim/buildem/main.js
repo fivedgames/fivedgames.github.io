@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/helloworld.bin.list", "start": 32768, "end": 44300, "audio": 0}, {"filename": "/parameters.json", "start": 44300, "end": 44653, "audio": 0}, {"filename": "/traces.vcd", "start": 44653, "end": 108300, "audio": 0}, {"filename": "/helloworld.s", "start": 108300, "end": 111988, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 111988, "end": 144756, "audio": 0}, {"filename": "/helloworld_loops.bin.list", "start": 144756, "end": 150964, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 150964, "end": 183732, "audio": 0}, {"filename": "/blink.bin.list", "start": 183732, "end": 185197, "audio": 0}, {"filename": "/helloworld_stack.bin.list", "start": 185197, "end": 190689, "audio": 0}, {"filename": "/blink.s", "start": 190689, "end": 190965, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 190965, "end": 191291, "audio": 0}, {"filename": "/helloworld_stack.s", "start": 191291, "end": 192830, "audio": 0}, {"filename": "/run.log", "start": 192830, "end": 192887, "audio": 0}, {"filename": "/helloworld_loops.s", "start": 192887, "end": 194710, "audio": 0}, {"filename": "/helloworld.bin", "start": 194710, "end": 227478, "audio": 0}, {"filename": "/imgui.ini", "start": 227478, "end": 230195, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 230195, "end": 392783, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 392783, "end": 973403, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 973403, "end": 1086847, "audio": 0}], "remote_package_size": 1086847, "package_uuid": "765ad10d-7dc8-4f7f-a4f9-84d2420aaeb5"});
+   loadPackage({"files": [{"filename": "/blink.bin", "start": 0, "end": 32768, "audio": 0}, {"filename": "/helloworld.bin.list", "start": 32768, "end": 44300, "audio": 0}, {"filename": "/parameters.json", "start": 44300, "end": 44653, "audio": 0}, {"filename": "/traces.vcd", "start": 44653, "end": 55284, "audio": 0}, {"filename": "/helloworld.s", "start": 55284, "end": 58972, "audio": 0}, {"filename": "/helloworld_loops.bin", "start": 58972, "end": 91740, "audio": 0}, {"filename": "/helloworld_loops.bin.list", "start": 91740, "end": 97948, "audio": 0}, {"filename": "/helloworld_stack.bin", "start": 97948, "end": 130716, "audio": 0}, {"filename": "/blink.bin.list", "start": 130716, "end": 132181, "audio": 0}, {"filename": "/helloworld_stack.bin.list", "start": 132181, "end": 137673, "audio": 0}, {"filename": "/blink.s", "start": 137673, "end": 137949, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 137949, "end": 138275, "audio": 0}, {"filename": "/helloworld_stack.s", "start": 138275, "end": 139814, "audio": 0}, {"filename": "/run.log", "start": 139814, "end": 139871, "audio": 0}, {"filename": "/layout.json", "start": 139871, "end": 140130, "audio": 0}, {"filename": "/helloworld_loops.s", "start": 140130, "end": 141953, "audio": 0}, {"filename": "/helloworld.bin", "start": 141953, "end": 174721, "audio": 0}, {"filename": "/imgui.ini", "start": 174721, "end": 177438, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 177438, "end": 340026, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 340026, "end": 920646, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 920646, "end": 1034090, "audio": 0}], "remote_package_size": 1034090, "package_uuid": "661ed3da-6c0f-48c8-9bc6-a3400c402c4a"});
   
   })();
   
@@ -1590,11 +1590,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5486944,
+    STACK_BASE = 5487024,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 244064,
-    DYNAMIC_BASE = 5486944,
-    DYNAMICTOP_PTR = 243136;
+    STACK_MAX = 244144,
+    DYNAMIC_BASE = 5487024,
+    DYNAMICTOP_PTR = 243216;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2244,7 +2244,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 243040;
+// STATICTOP = STATIC_BASE + 243120;
 /* global initializers */ if (!ENVIRONMENT_IS_PTHREAD) __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -2289,7 +2289,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var ERRNO_CODES={EPERM:63,ENOENT:44,ESRCH:71,EINTR:27,EIO:29,ENXIO:60,E2BIG:1,ENOEXEC:45,EBADF:8,ECHILD:12,EAGAIN:6,EWOULDBLOCK:6,ENOMEM:48,EACCES:2,EFAULT:21,ENOTBLK:105,EBUSY:10,EEXIST:20,EXDEV:75,ENODEV:43,ENOTDIR:54,EISDIR:31,EINVAL:28,ENFILE:41,EMFILE:33,ENOTTY:59,ETXTBSY:74,EFBIG:22,ENOSPC:51,ESPIPE:70,EROFS:69,EMLINK:34,EPIPE:64,EDOM:18,ERANGE:68,ENOMSG:49,EIDRM:24,ECHRNG:106,EL2NSYNC:156,EL3HLT:107,EL3RST:108,ELNRNG:109,EUNATCH:110,ENOCSI:111,EL2HLT:112,EDEADLK:16,ENOLCK:46,EBADE:113,EBADR:114,EXFULL:115,ENOANO:104,EBADRQC:103,EBADSLT:102,EDEADLOCK:16,EBFONT:101,ENOSTR:100,ENODATA:116,ETIME:117,ENOSR:118,ENONET:119,ENOPKG:120,EREMOTE:121,ENOLINK:47,EADV:122,ESRMNT:123,ECOMM:124,EPROTO:65,EMULTIHOP:36,EDOTDOT:125,EBADMSG:9,ENOTUNIQ:126,EBADFD:127,EREMCHG:128,ELIBACC:129,ELIBBAD:130,ELIBSCN:131,ELIBMAX:132,ELIBEXEC:133,ENOSYS:52,ENOTEMPTY:55,ENAMETOOLONG:37,ELOOP:32,EOPNOTSUPP:138,EPFNOSUPPORT:139,ECONNRESET:15,ENOBUFS:42,EAFNOSUPPORT:5,EPROTOTYPE:67,ENOTSOCK:57,ENOPROTOOPT:50,ESHUTDOWN:140,ECONNREFUSED:14,EADDRINUSE:3,ECONNABORTED:13,ENETUNREACH:40,ENETDOWN:38,ETIMEDOUT:73,EHOSTDOWN:142,EHOSTUNREACH:23,EINPROGRESS:26,EALREADY:7,EDESTADDRREQ:17,EMSGSIZE:35,EPROTONOSUPPORT:66,ESOCKTNOSUPPORT:137,EADDRNOTAVAIL:4,ENETRESET:39,EISCONN:30,ENOTCONN:53,ETOOMANYREFS:141,EUSERS:136,EDQUOT:19,ESTALE:72,ENOTSUP:138,ENOMEDIUM:148,EILSEQ:25,EOVERFLOW:61,ECANCELED:11,ENOTRECOVERABLE:56,EOWNERDEAD:62,ESTRPIPE:135};
   
   
-  var __main_thread_futex_wait_address=244048;function _emscripten_futex_wake(addr, count) {
+  var __main_thread_futex_wait_address=244128;function _emscripten_futex_wake(addr, count) {
       if (addr <= 0 || addr > HEAP8.length || addr&3 != 0 || count < 0) return -28;
       if (count == 0) return 0;
       // Waking (at least) INT_MAX waiters is defined to mean wake all callers.
@@ -2364,7 +2364,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         // up each Worker immediately. (in asm.js mode ignore PTHREAD_POOL_DELAY_LOAD altogether for
         // simplicity, as multithreading performance optimizations are not interesting there)
   
-        PThread.mainThreadBlock = 243296;
+        PThread.mainThreadBlock = 243376;
   
         for (var i = 0; i < 232/4; ++i) HEAPU32[PThread.mainThreadBlock/4+i] = 0;
   
@@ -2377,7 +2377,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         HEAP32[((headPtr)>>2)]=headPtr;
   
         // Allocate memory for thread-local storage.
-        var tlsMemory = 243536;
+        var tlsMemory = 243616;
         for (var i = 0; i < 128; ++i) HEAPU32[tlsMemory/4+i] = 0;
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 104 ) >> 2, tlsMemory); // Init thread-local-storage memory array.
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 40 ) >> 2, PThread.mainThreadBlock); // Main thread ID.
@@ -7588,7 +7588,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
 
   function _emscripten_get_sbrk_ptr() {
-      return 243136;
+      return 243216;
     }
 
   function _emscripten_glActiveTexture(x0) { GLctx['activeTexture'](x0) }
@@ -11534,10 +11534,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _glViewport(x0, x1, x2, x3) { GLctx['viewport'](x0, x1, x2, x3) }
 
   
-  var ___tm_current=243152;
+  var ___tm_current=243232;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 243200, 4), 243200);
+  var ___tm_timezone=(stringToUTF8("GMT", 243280, 4), 243280);
   
   function _tzset() {
   if (ENVIRONMENT_IS_PTHREAD) return _emscripten_proxy_to_main_thread_js(65, 1);

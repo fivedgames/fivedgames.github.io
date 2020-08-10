@@ -192,7 +192,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/parameters.json", "start": 0, "end": 312, "audio": 0}, {"filename": "/traces.vcd", "start": 312, "end": 13014, "audio": 0}, {"filename": "/sourcecode.s", "start": 13014, "end": 14841, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 14841, "end": 15167, "audio": 0}, {"filename": "/run.log", "start": 15167, "end": 15224, "audio": 0}, {"filename": "/sourcecode.bin", "start": 15224, "end": 47992, "audio": 0}, {"filename": "/layout.json", "start": 47992, "end": 48304, "audio": 0}, {"filename": "/sourcecode.bin.list", "start": 48304, "end": 54570, "audio": 0}, {"filename": "/imgui.ini", "start": 54570, "end": 57538, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 57538, "end": 220126, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 220126, "end": 809162, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 809162, "end": 922606, "audio": 0}], "remote_package_size": 922606, "package_uuid": "fbc455ec-9954-4d3f-8402-abcd9ccd6494"});
+   loadPackage({"files": [{"filename": "/parameters.json", "start": 0, "end": 312, "audio": 0}, {"filename": "/traces.vcd", "start": 312, "end": 1430424, "audio": 0}, {"filename": "/sourcecode.s", "start": 1430424, "end": 1432257, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 1432257, "end": 1432583, "audio": 0}, {"filename": "/run.log", "start": 1432583, "end": 1432640, "audio": 0}, {"filename": "/sourcecode.bin", "start": 1432640, "end": 1465408, "audio": 0}, {"filename": "/layout.json", "start": 1465408, "end": 1465708, "audio": 0}, {"filename": "/sourcecode.bin.list", "start": 1465708, "end": 1472070, "audio": 0}, {"filename": "/imgui.ini", "start": 1472070, "end": 1474202, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 1474202, "end": 1636790, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 1636790, "end": 2225826, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 2225826, "end": 2339270, "audio": 0}], "remote_package_size": 2339270, "package_uuid": "9fec37fb-073f-49e5-a2b9-042b30b5e815"});
   
   })();
   
@@ -933,8 +933,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 1997,
-  'maximum': 1997 + 0,
+  'initial': 2003,
+  'maximum': 2003 + 0,
   'element': 'anyfunc'
 });
 
@@ -1537,11 +1537,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5492960,
+    STACK_BASE = 5493584,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 250080,
-    DYNAMIC_BASE = 5492960,
-    DYNAMICTOP_PTR = 249152;
+    STACK_MAX = 250704,
+    DYNAMIC_BASE = 5493584,
+    DYNAMICTOP_PTR = 249776;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2164,20 +2164,20 @@ var ASM_CONSTS = {
  55136: function($0, $1) {var SDL2 = Module['SDL2']; var numChannels = SDL2.capture.currentCaptureBuffer.numberOfChannels; for (var c = 0; c < numChannels; ++c) { var channelData = SDL2.capture.currentCaptureBuffer.getChannelData(c); if (channelData.length != $1) { throw 'Web Audio capture buffer length mismatch! Destination size: ' + channelData.length + ' samples vs expected ' + $1 + ' samples!'; } if (numChannels == 1) { for (var j = 0; j < $1; ++j) { setValue($0 + (j * 4), channelData[j], 'float'); } } else { for (var j = 0; j < $1; ++j) { setValue($0 + (((j * numChannels) + c) * 4), channelData[j], 'float'); } } }},  
  55741: function($0, $1) {var SDL2 = Module['SDL2']; var numChannels = SDL2.audio.currentOutputBuffer['numberOfChannels']; for (var c = 0; c < numChannels; ++c) { var channelData = SDL2.audio.currentOutputBuffer['getChannelData'](c); if (channelData.length != $1) { throw 'Web Audio output buffer length mismatch! Destination size: ' + channelData.length + ' samples vs expected ' + $1 + ' samples!'; } for (var j = 0; j < $1; ++j) { channelData[j] = HEAPF32[$0 + ((j*numChannels + c) << 2) >> 2]; } }},  
  56221: function($0) {var SDL2 = Module['SDL2']; if ($0) { if (SDL2.capture.silenceTimer !== undefined) { clearTimeout(SDL2.capture.silenceTimer); } if (SDL2.capture.stream !== undefined) { var tracks = SDL2.capture.stream.getAudioTracks(); for (var i = 0; i < tracks.length; i++) { SDL2.capture.stream.removeTrack(tracks[i]); } SDL2.capture.stream = undefined; } if (SDL2.capture.scriptProcessorNode !== undefined) { SDL2.capture.scriptProcessorNode.onaudioprocess = function(audioProcessingEvent) {}; SDL2.capture.scriptProcessorNode.disconnect(); SDL2.capture.scriptProcessorNode = undefined; } if (SDL2.capture.mediaStreamNode !== undefined) { SDL2.capture.mediaStreamNode.disconnect(); SDL2.capture.mediaStreamNode = undefined; } if (SDL2.capture.silenceBuffer !== undefined) { SDL2.capture.silenceBuffer = undefined } SDL2.capture = undefined; } else { if (SDL2.audio.scriptProcessorNode != undefined) { SDL2.audio.scriptProcessorNode.disconnect(); SDL2.audio.scriptProcessorNode = undefined; } SDL2.audio = undefined; } if ((SDL2.audioContext !== undefined) && (SDL2.audio === undefined) && (SDL2.capture === undefined)) { SDL2.audioContext.close(); SDL2.audioContext = undefined; }},  
- 79596: function() {throw 'Canceled!'},  
- 79816: function($0, $1) {setTimeout(function() { _do_emscripten_dispatch_to_thread($0, $1); }, 0);}
+ 79660: function() {throw 'Canceled!'},  
+ 79880: function($0, $1) {setTimeout(function() { _do_emscripten_dispatch_to_thread($0, $1); }, 0);}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var args = readAsmConstArgs(sigPtr, argbuf);
   return ASM_CONSTS[code].apply(null, args);
 }function initPthreadsJS(){ PThread.initRuntime(); }
-function open_session(){ if( typeof open_session.eventSet == 'undefined' ) { open_session.eventSet = 0; } const fsf = document.getElementById('fsf'); fsf.reset(); const fs= document.getElementById('fs'); fs.click(); if(open_session.eventSet == 0) { open_session.eventSet = 1; fs.addEventListener('change', (event) => { if(event.target.files.length > 0) { file = event.target.files[0]; const reader = new FileReader(); reader.addEventListener('loadend', (event) => { let result=reader.result; const uint8_view = new Uint8Array(result); FS.writeFile('tejotron.zip', uint8_view); Module.ccall('readyToLoadSession', '', [''], []); open_session.eventSet = 0; }); reader.readAsArrayBuffer(file); } }, { once: true }); } }
+function open_session(){ if( typeof open_session.eventSet == 'undefined' ) { open_session.eventSet = 0; } const fsf = document.getElementById('fsf'); fsf.reset(); const fs= document.getElementById('fs'); fs.click(); if(open_session.eventSet == 0) { open_session.eventSet = 1; fs.addEventListener('change', (event) => { if(event.target.files.length > 0) { file = event.target.files[0]; const reader = new FileReader(); reader.addEventListener('loadend', (event) => { let result=reader.result; const uint8_view = new Uint8Array(result); FS.writeFile('tejotron.zip', uint8_view); Module.ccall('readyToLoadSession', "", [""], []); open_session.eventSet = 0; }); reader.readAsArrayBuffer(file); } }, { once: true }); } }
 function save_session(name){ mime = "application/zip"; filename = UTF8ToString(name); let content = Module.FS.readFile(filename); var a = document.createElement('a'); a.download = filename; a.href = URL.createObjectURL(new Blob([content], {type: mime})); a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(a.href); }, 2000); }
 
 
 
-// STATICTOP = STATIC_BASE + 249056;
+// STATICTOP = STATIC_BASE + 249680;
 /* global initializers */ if (!ENVIRONMENT_IS_PTHREAD) __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -2226,7 +2226,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   var ERRNO_CODES={EPERM:63,ENOENT:44,ESRCH:71,EINTR:27,EIO:29,ENXIO:60,E2BIG:1,ENOEXEC:45,EBADF:8,ECHILD:12,EAGAIN:6,EWOULDBLOCK:6,ENOMEM:48,EACCES:2,EFAULT:21,ENOTBLK:105,EBUSY:10,EEXIST:20,EXDEV:75,ENODEV:43,ENOTDIR:54,EISDIR:31,EINVAL:28,ENFILE:41,EMFILE:33,ENOTTY:59,ETXTBSY:74,EFBIG:22,ENOSPC:51,ESPIPE:70,EROFS:69,EMLINK:34,EPIPE:64,EDOM:18,ERANGE:68,ENOMSG:49,EIDRM:24,ECHRNG:106,EL2NSYNC:156,EL3HLT:107,EL3RST:108,ELNRNG:109,EUNATCH:110,ENOCSI:111,EL2HLT:112,EDEADLK:16,ENOLCK:46,EBADE:113,EBADR:114,EXFULL:115,ENOANO:104,EBADRQC:103,EBADSLT:102,EDEADLOCK:16,EBFONT:101,ENOSTR:100,ENODATA:116,ETIME:117,ENOSR:118,ENONET:119,ENOPKG:120,EREMOTE:121,ENOLINK:47,EADV:122,ESRMNT:123,ECOMM:124,EPROTO:65,EMULTIHOP:36,EDOTDOT:125,EBADMSG:9,ENOTUNIQ:126,EBADFD:127,EREMCHG:128,ELIBACC:129,ELIBBAD:130,ELIBSCN:131,ELIBMAX:132,ELIBEXEC:133,ENOSYS:52,ENOTEMPTY:55,ENAMETOOLONG:37,ELOOP:32,EOPNOTSUPP:138,EPFNOSUPPORT:139,ECONNRESET:15,ENOBUFS:42,EAFNOSUPPORT:5,EPROTOTYPE:67,ENOTSOCK:57,ENOPROTOOPT:50,ESHUTDOWN:140,ECONNREFUSED:14,EADDRINUSE:3,ECONNABORTED:13,ENETUNREACH:40,ENETDOWN:38,ETIMEDOUT:73,EHOSTDOWN:142,EHOSTUNREACH:23,EINPROGRESS:26,EALREADY:7,EDESTADDRREQ:17,EMSGSIZE:35,EPROTONOSUPPORT:66,ESOCKTNOSUPPORT:137,EADDRNOTAVAIL:4,ENETRESET:39,EISCONN:30,ENOTCONN:53,ETOOMANYREFS:141,EUSERS:136,EDQUOT:19,ESTALE:72,ENOTSUP:138,ENOMEDIUM:148,EILSEQ:25,EOVERFLOW:61,ECANCELED:11,ENOTRECOVERABLE:56,EOWNERDEAD:62,ESTRPIPE:135};
   
   
-  var __main_thread_futex_wait_address=250064;function _emscripten_futex_wake(addr, count) {
+  var __main_thread_futex_wait_address=250688;function _emscripten_futex_wake(addr, count) {
       if (addr <= 0 || addr > HEAP8.length || addr&3 != 0 || count < 0) return -28;
       if (count == 0) return 0;
       // Waking (at least) INT_MAX waiters is defined to mean wake all callers.
@@ -2301,7 +2301,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
         // up each Worker immediately. (in asm.js mode ignore PTHREAD_POOL_DELAY_LOAD altogether for
         // simplicity, as multithreading performance optimizations are not interesting there)
   
-        PThread.mainThreadBlock = 249312;
+        PThread.mainThreadBlock = 249936;
   
         for (var i = 0; i < 232/4; ++i) HEAPU32[PThread.mainThreadBlock/4+i] = 0;
   
@@ -2314,7 +2314,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
         HEAP32[((headPtr)>>2)]=headPtr;
   
         // Allocate memory for thread-local storage.
-        var tlsMemory = 249552;
+        var tlsMemory = 250176;
         for (var i = 0; i < 128; ++i) HEAPU32[tlsMemory/4+i] = 0;
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 104 ) >> 2, tlsMemory); // Init thread-local-storage memory array.
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 40 ) >> 2, PThread.mainThreadBlock); // Main thread ID.
@@ -7555,7 +7555,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   
 
   function _emscripten_get_sbrk_ptr() {
-      return 249152;
+      return 249776;
     }
 
   function _emscripten_glActiveTexture(x0) { GLctx['activeTexture'](x0) }
@@ -11487,10 +11487,10 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   function _glViewport(x0, x1, x2, x3) { GLctx['viewport'](x0, x1, x2, x3) }
 
   
-  var ___tm_current=249168;
+  var ___tm_current=249792;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 249216, 4), 249216);
+  var ___tm_timezone=(stringToUTF8("GMT", 249840, 4), 249840);
   
   function _tzset() {
   if (ENVIRONMENT_IS_PTHREAD) return _emscripten_proxy_to_main_thread_js(68, 1);

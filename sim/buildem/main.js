@@ -192,7 +192,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/parameters.json", "start": 0, "end": 312, "audio": 0}, {"filename": "/traces.vcd", "start": 312, "end": 1430424, "audio": 0}, {"filename": "/sourcecode.s", "start": 1430424, "end": 1432257, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 1432257, "end": 1432583, "audio": 0}, {"filename": "/run.log", "start": 1432583, "end": 1432640, "audio": 0}, {"filename": "/sourcecode.bin", "start": 1432640, "end": 1465408, "audio": 0}, {"filename": "/layout.json", "start": 1465408, "end": 1465708, "audio": 0}, {"filename": "/sourcecode.bin.list", "start": 1465708, "end": 1472070, "audio": 0}, {"filename": "/imgui.ini", "start": 1472070, "end": 1474202, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 1474202, "end": 1636790, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 1636790, "end": 2225826, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 2225826, "end": 2339270, "audio": 0}], "remote_package_size": 2339270, "package_uuid": "9fec37fb-073f-49e5-a2b9-042b30b5e815"});
+   loadPackage({"files": [{"filename": "/parameters.json", "start": 0, "end": 312, "audio": 0}, {"filename": "/traces.vcd", "start": 312, "end": 2423506, "audio": 0}, {"filename": "/sourcecode.s", "start": 2423506, "end": 2425339, "audio": 0}, {"filename": "/vasm_messages.txt", "start": 2425339, "end": 2425665, "audio": 0}, {"filename": "/run.log", "start": 2425665, "end": 2425722, "audio": 0}, {"filename": "/sourcecode.bin", "start": 2425722, "end": 2458490, "audio": 0}, {"filename": "/layout.json", "start": 2458490, "end": 2458790, "audio": 0}, {"filename": "/sourcecode.bin.list", "start": 2458790, "end": 2465152, "audio": 0}, {"filename": "/imgui.ini", "start": 2465152, "end": 2467284, "audio": 0}, {"filename": "/fonts/Roboto-Medium.ttf", "start": 2467284, "end": 2629872, "audio": 0}, {"filename": "/fonts/awesome.otf", "start": 2629872, "end": 3218908, "audio": 0}, {"filename": "/fonts/RobotoMono-Regular.ttf", "start": 3218908, "end": 3332352, "audio": 0}], "remote_package_size": 3332352, "package_uuid": "c9d7fb9f-9234-44c5-b0e9-137ca9ffe89c"});
   
   })();
   
@@ -1537,11 +1537,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5493584,
+    STACK_BASE = 5493648,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 250704,
-    DYNAMIC_BASE = 5493584,
-    DYNAMICTOP_PTR = 249776;
+    STACK_MAX = 250768,
+    DYNAMIC_BASE = 5493648,
+    DYNAMICTOP_PTR = 249840;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2177,7 +2177,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
 
 
 
-// STATICTOP = STATIC_BASE + 249680;
+// STATICTOP = STATIC_BASE + 249744;
 /* global initializers */ if (!ENVIRONMENT_IS_PTHREAD) __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -2226,7 +2226,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   var ERRNO_CODES={EPERM:63,ENOENT:44,ESRCH:71,EINTR:27,EIO:29,ENXIO:60,E2BIG:1,ENOEXEC:45,EBADF:8,ECHILD:12,EAGAIN:6,EWOULDBLOCK:6,ENOMEM:48,EACCES:2,EFAULT:21,ENOTBLK:105,EBUSY:10,EEXIST:20,EXDEV:75,ENODEV:43,ENOTDIR:54,EISDIR:31,EINVAL:28,ENFILE:41,EMFILE:33,ENOTTY:59,ETXTBSY:74,EFBIG:22,ENOSPC:51,ESPIPE:70,EROFS:69,EMLINK:34,EPIPE:64,EDOM:18,ERANGE:68,ENOMSG:49,EIDRM:24,ECHRNG:106,EL2NSYNC:156,EL3HLT:107,EL3RST:108,ELNRNG:109,EUNATCH:110,ENOCSI:111,EL2HLT:112,EDEADLK:16,ENOLCK:46,EBADE:113,EBADR:114,EXFULL:115,ENOANO:104,EBADRQC:103,EBADSLT:102,EDEADLOCK:16,EBFONT:101,ENOSTR:100,ENODATA:116,ETIME:117,ENOSR:118,ENONET:119,ENOPKG:120,EREMOTE:121,ENOLINK:47,EADV:122,ESRMNT:123,ECOMM:124,EPROTO:65,EMULTIHOP:36,EDOTDOT:125,EBADMSG:9,ENOTUNIQ:126,EBADFD:127,EREMCHG:128,ELIBACC:129,ELIBBAD:130,ELIBSCN:131,ELIBMAX:132,ELIBEXEC:133,ENOSYS:52,ENOTEMPTY:55,ENAMETOOLONG:37,ELOOP:32,EOPNOTSUPP:138,EPFNOSUPPORT:139,ECONNRESET:15,ENOBUFS:42,EAFNOSUPPORT:5,EPROTOTYPE:67,ENOTSOCK:57,ENOPROTOOPT:50,ESHUTDOWN:140,ECONNREFUSED:14,EADDRINUSE:3,ECONNABORTED:13,ENETUNREACH:40,ENETDOWN:38,ETIMEDOUT:73,EHOSTDOWN:142,EHOSTUNREACH:23,EINPROGRESS:26,EALREADY:7,EDESTADDRREQ:17,EMSGSIZE:35,EPROTONOSUPPORT:66,ESOCKTNOSUPPORT:137,EADDRNOTAVAIL:4,ENETRESET:39,EISCONN:30,ENOTCONN:53,ETOOMANYREFS:141,EUSERS:136,EDQUOT:19,ESTALE:72,ENOTSUP:138,ENOMEDIUM:148,EILSEQ:25,EOVERFLOW:61,ECANCELED:11,ENOTRECOVERABLE:56,EOWNERDEAD:62,ESTRPIPE:135};
   
   
-  var __main_thread_futex_wait_address=250688;function _emscripten_futex_wake(addr, count) {
+  var __main_thread_futex_wait_address=250752;function _emscripten_futex_wake(addr, count) {
       if (addr <= 0 || addr > HEAP8.length || addr&3 != 0 || count < 0) return -28;
       if (count == 0) return 0;
       // Waking (at least) INT_MAX waiters is defined to mean wake all callers.
@@ -2301,7 +2301,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
         // up each Worker immediately. (in asm.js mode ignore PTHREAD_POOL_DELAY_LOAD altogether for
         // simplicity, as multithreading performance optimizations are not interesting there)
   
-        PThread.mainThreadBlock = 249936;
+        PThread.mainThreadBlock = 250000;
   
         for (var i = 0; i < 232/4; ++i) HEAPU32[PThread.mainThreadBlock/4+i] = 0;
   
@@ -2314,7 +2314,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
         HEAP32[((headPtr)>>2)]=headPtr;
   
         // Allocate memory for thread-local storage.
-        var tlsMemory = 250176;
+        var tlsMemory = 250240;
         for (var i = 0; i < 128; ++i) HEAPU32[tlsMemory/4+i] = 0;
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 104 ) >> 2, tlsMemory); // Init thread-local-storage memory array.
         Atomics.store(HEAPU32, (PThread.mainThreadBlock + 40 ) >> 2, PThread.mainThreadBlock); // Main thread ID.
@@ -7555,7 +7555,7 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   
 
   function _emscripten_get_sbrk_ptr() {
-      return 249776;
+      return 249840;
     }
 
   function _emscripten_glActiveTexture(x0) { GLctx['activeTexture'](x0) }
@@ -11487,10 +11487,10 @@ function save_session(name){ mime = "application/zip"; filename = UTF8ToString(n
   function _glViewport(x0, x1, x2, x3) { GLctx['viewport'](x0, x1, x2, x3) }
 
   
-  var ___tm_current=249792;
+  var ___tm_current=249856;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 249840, 4), 249840);
+  var ___tm_timezone=(stringToUTF8("GMT", 249904, 4), 249904);
   
   function _tzset() {
   if (ENVIRONMENT_IS_PTHREAD) return _emscripten_proxy_to_main_thread_js(68, 1);
